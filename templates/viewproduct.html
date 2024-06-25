@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        
+        <table>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>image</th>
+                <th>price</th>
+                <th>details</th>
+                <th>stock</th>
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+            <tr>
+                {% for v in view %}
+                <td>{{v.id}}</td>
+                <td>{{v.name}}</td>
+                <td><img src="{{v.image.url}}" height="100px" width="100px"></td>
+                <td>{{v.price}}</td>
+                <td>{{v.details}}</td>
+                <td>{{v.stock}}</td>
+                <td><a href="{% url 'edit_product' v.id %}">edit</a></td>
+                <td><a href="{% url 'delete_product' v.id %}">delete</a></td>
+                
+               
+                
+            </tr>
+            {% endfor %}
+        </table>
+       
+    </body>  
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    hello welcome
+    <li><a href="{% url 'customerview' %}">view product</a></li>
+    <li><a href="{% url 'viewcart' %}">view cart</a></li>
+    <li><a href="{% url 'viewdetails' %}">viewdetails</a></li>
+</body>
+{% if messages %}
+{% for msg in messages %}
+<script>
+    alert('{{msg}}')
+</script>
+{% endfor %}
+{% endif %}
+</html>

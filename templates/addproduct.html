@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="{% url 'addproductaction' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <th>Name</th>
+            <td><input type="text" id="name" name="name"></td>
+          </tr>
+          <tr>
+            <th>price</th>
+            <td><input type="text" id="price" name="price"></td>
+          </tr>
+          <tr>
+            <th>details</th>
+            <td><input type="text" id="details" name="details"></td>
+          </tr>
+          <tr>
+            <th>stock</th>
+            <td><input type="text" id="stock" name="stock"></td>
+          </tr>
+          <tr>
+            <th>image</th>
+            <td><input type="file" id="image" name="image"></td>
+          </tr>
+    
+          <tr>
+            <th></th>
+            <td><input type="submit" value="save"></td>
+          </tr>
+        </table>
+      </form>
+    </body>
+    {% if messages %}
+    {% for msg in messages %}
+    <script>
+        alert('{{msg}}')
+    </script>
+    {% endfor %}
+    {% endif %}
+    </body>
+      
+</body>
+</html>

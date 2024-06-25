@@ -1,0 +1,41 @@
+<html><body>
+    <form method="post" action="{% url 'paymentaction' %}">
+    <table>
+        {% csrf_token %}
+        {% for v in views %}
+        <tr>
+            <th></th>
+            <td></td>
+            <input type="hidden" name="orderid" value="{{v.id}}" >
+            </tr>
+        <tr>
+            <th>card name</th>
+            <td><input type="text" name="cardname" placeholder="ABC"></td>
+        </tr>
+        <tr>
+            <th>card number</th>
+            <td><input type="text" name="cardnumber"></td>
+        </tr>
+        <tr>
+            <th>cvv</th>
+            <td><input type="text" name="cvv"></td>
+        </tr>
+        <tr><th>expiary date</th>
+            <td><input type="text" name="expdate"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><input type="submit" value="paynow  {{v.grandtotal}}"></td>
+        
+    </tr>
+    {% endfor %}
+    </table>
+</form>
+{% if messages %}
+{% for msg in messages %}
+<script>
+    alert('{{msg}}')
+</script>
+{% endfor %}
+{% endif %}
+</body></html>

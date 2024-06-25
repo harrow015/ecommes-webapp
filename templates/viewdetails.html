@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <table>
+        <tr><th>orderid</th>
+            <th>name</th>
+            <th>address</th>
+            <th>phone</th>
+        </tr>
+        {% for v in view %}
+        <tr>
+            <td>{{v.id}}</td>
+            <td>{{v.name}}</td>
+            <td>{{v.address}}</td>
+            <td>{{v.phone}}</td>
+            <td><a href="{% url 'details' v.id %}">details</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <li></li>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>    <script>
+        $(document).ready(function(){
+            $("#quantity").change(function(){
+               var price=parseInt($("#price").val());
+               var quanty=parseInt($("#quantity").val());
+               var total=price*quanty
+               $("#total_price").val(total)
+
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <table>
+        <form method="post" action="{% url 'cartaction' %}" >
+        {% csrf_token %}
+        {% for v in view %}
+        <tr>
+            <th></th>
+            <td></td>
+            <input type="hidden" name="id" value="{{v.id}}" >
+            </tr>
+        <tr>
+        <th>NAME</th>
+        <td>{{v.name}}</td>
+        </tr>
+        <tr>
+        <th>image</th>
+        <td><img src="{{v.image.url}}" height="100px" width="100px"></td>
+        </tr>
+        <tr>
+            <th>stock</th>
+            <td>{{v.stock}}</td>
+            <input type="hidden" name="stock" value="{{v.stock}}" >
+            </tr>
+        <tr>
+            <th>price</th>
+            <td>{{v.price}}</td>
+            <input type="hidden" value="{{v.price}}" id="price">
+                </tr>
+        
+        <tr>
+            <th>ADDRESS</th>
+            <td><textarea name="address" cols="10" rows="5"></textarea></td>
+            </tr>
+        <tr>
+            <th>Mobile</th>
+            <td><input type="text" name="mobile" ></td>
+            </tr>
+        <tr>
+            <th>quanty</th>
+            <td><input type="text" name="quanty" id="quantity"></td>
+            </tr> 
+        <tr>
+            <th>total</th>
+            <td><input type="text" name="total" id="total_price"></td>
+            </tr>       
+        <tr>
+        <th></th>
+        <td><input type="submit" value="place oder"></td>
+        </tr>
+        {% endfor %}
+        </form>
+</body>
+</html>

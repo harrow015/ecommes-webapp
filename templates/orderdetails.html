@@ -1,0 +1,41 @@
+<html>
+<body>
+    <table>
+    <tr><th>orderdate</th>
+        <th>ordertime</th>
+    </tr>
+    {% for v in view %}
+    <tr>
+        <td>{{v.order_date}}</td>
+        <td>{{v.order_time}}</td>
+        </tr>
+        {% for m in views %}
+        <tr>
+            <th>image</th>
+        <td><img src="{{m.productid.image.url}}" height="100px" width="100px"></td></tr>
+        <tr>
+            <th>product name</th>
+        <td>{{m.productid.name}}</td></tr>
+        <tr>
+            <th>quantity</th>
+        <td>{{m.quantity}}</td></tr>
+        <tr>
+            <th>total</th>
+        <td>{{m.total}}</td></tr>
+        {% endfor %}
+        <tr>
+       <td><li><a href="{% url 'cancelorder' v.id %}">cancelorder</a></li></td> 
+        {% endfor %}
+
+    </tr>
+</table>
+
+{% if messages %}
+{% for msg in messages %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endfor %}
+{% endif %}
+</body>
+</html>

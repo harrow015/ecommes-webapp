@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    products
+
+    <table>
+        <tr>
+            <th>name</th>
+            <th>image</th>
+            <th>price</th>
+            <th>details</th>
+            <th>stock</th>
+        </tr>
+        {% for v in view %}
+        <tr>
+            
+            <td>{{v.name}}</td>
+            <td><img src="{{v.image.url}}" height="100px" width="100px"></td>
+            <td>{{v.price}}</td>
+            <td>{{v.details}}</td>
+            <td>{{v.stock}}</td>
+            <td><li><a href="{% url 'addtocart' v.id %}">addto cart</a></li></td>
+           
+        </tr>
+        {% endfor %}
+    </table>
+   
+</body>
+{% if messages %}
+{% for msg in messages %}
+<script>
+    alert('{{msg}}')
+</script>
+{% endfor %}
+{% endif %}
+</html>

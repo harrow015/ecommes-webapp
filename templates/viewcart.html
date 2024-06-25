@@ -1,0 +1,57 @@
+<html>
+    <body>
+        <table>
+            <form method="post" action="{% url 'orderaction' %}">
+            {% csrf_token %}
+            <tr>
+                <th></th>
+                <td></td>
+                <input type="hidden" name="id" value="{{v.id}}" >
+                </tr>
+        <tr>
+            <th>NAME</th>
+            <th>image</th>
+            <th>total</th>
+            <th>quanty</th>
+            {% for v in view %}
+            <tr>
+        <td>{{v.productid.name}}</td>
+        <td><img src="{{v.productid.image.url}}" height="100px" width="100px"></td>
+            <td>{{v.total}}</td>
+            <td>{{v.quantity}}</td>
+            <td><a href="{% url 'deleteitem' v.id %}">delete</a></td>
+            </tr>     
+        {% endfor %}
+      <tr>
+        <th>grand total</th>
+        <td><input type="text" value="{{gtotal}}" name="grandtotal" readonly="true"></td> 
+    </tr>
+      
+        <tr>
+        <th>name</th>
+        <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+       <th>address</th>  
+       <td><textarea cols="10" rows="5" name="address"></textarea></td>
+        </tr>
+        <tr>
+       <th> phone</th>
+       <td><input type="text" name="phone"></td>
+        </tr>
+        <tr>
+            <th></th>
+        <td><input type="submit" value="conform order"></td>
+        </tr>
+    </table>
+</form>
+        </body>
+        {% if messages %}
+            {% for msg in messages %}
+            <script>
+                alert('{{msg}}')
+            </script>
+            {% endfor %}
+            {% endif %}
+        
+</html>
